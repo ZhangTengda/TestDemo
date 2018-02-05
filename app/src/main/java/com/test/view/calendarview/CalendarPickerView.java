@@ -131,8 +131,10 @@ public class CalendarPickerView extends ListView {
                 res.getColor(R.color.calendar_bg));
         dividerColor = a.getColor(R.styleable.CalendarPickerView_tsquare_dividerColor,
                 res.getColor(R.color.calendar_divider));
+        // 选中日期的背景色
         dayBackgroundResId = a.getResourceId(R.styleable.CalendarPickerView_tsquare_dayBackground,
                 R.drawable.calendar_bg_selector);
+
         dayTextColorResId = a.getResourceId(R.styleable.CalendarPickerView_tsquare_dayTextColor,
                 R.drawable.day_text_color);
         titleTextColor = a.getColor(R.styleable.CalendarPickerView_tsquare_titleTextColor,

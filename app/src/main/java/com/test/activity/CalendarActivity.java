@@ -38,11 +38,6 @@ public class CalendarActivity extends BaseActivity {
         }
 
 
-//        final Calendar nextYear = Calendar.getInstance();
-//        nextYear.add(Calendar.YEAR, 1);
-//
-//        final Calendar lastYear = Calendar.getInstance();
-//        lastYear.add(Calendar.YEAR, -1);
         CalendarPickerView calendarPickerView = (CalendarPickerView) findViewById(R.id.activity_calendar_calendarview);
 
         calendarPickerView.init(calendar.getTime(), endCalendar.getTime()) //
