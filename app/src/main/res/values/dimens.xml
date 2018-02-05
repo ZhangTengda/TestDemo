@@ -6,4 +6,12 @@
     <dimen name="item_decoration_title_height">20dp</dimen>
     <dimen name="item_decoration_title_start_margin">16dp</dimen>
     <dimen name="item_decoration_title_fontsize">12sp</dimen>
+
+    <!--calendar-->
+    <dimen name="calendar_day_headers_paddingbottom">4dp</dimen>
+    <dimen name="calendar_month_topmargin">16dp</dimen>
+    <dimen name="calendar_month_title_bottommargin">4dp</dimen>
+    <dimen name="calendar_text_medium">16sp</dimen>
+    <dimen name="calendar_text_large">18sp</dimen>
+    <dimen name="calendar_text_small">12sp</dimen>
 </resources>

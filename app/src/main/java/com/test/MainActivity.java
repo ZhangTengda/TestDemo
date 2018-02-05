@@ -1,5 +1,6 @@
 package com.test;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DividerItemDecoration;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.test.activity.BaseActivity;
+import com.test.activity.CalendarActivity;
 import com.test.adapter.MainActivityAdapter;
 
 import butterknife.BindView;
@@ -39,6 +41,19 @@ public class MainActivity extends BaseActivity implements MainActivityAdapter.Re
 
     @Override
     public void onItemClick(View view, int position) {
-        
+        Intent intent = new Intent();
+        switch (position) {
+            case 0: {
+                intent.setClass(this, CalendarActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case 1: {
+                intent.setClass(this, CalendarActivity.class);
+                startActivity(intent);
+                break;
+            }
+
+        }
     }
 }
