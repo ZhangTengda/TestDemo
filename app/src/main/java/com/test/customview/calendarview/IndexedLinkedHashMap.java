@@ -1,4 +1,4 @@
-package com.test.view.calendarview;
+package com.test.customview.calendarview;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

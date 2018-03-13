@@ -1,4 +1,4 @@
-package com.test.view.calendarview;
+package com.test.customview.calendarview;
 
 /** Adapter used to provide a layout for {@link CalendarCellView}.*/
 public interface DayViewAdapter {

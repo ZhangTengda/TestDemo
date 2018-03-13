@@ -1,4 +1,4 @@
-package com.test.view.calendarview;
+package com.test.customview.calendarview;
 
 /** The range state of a cell for {@link MonthCellDescriptor} and {@link CalendarCellView}*/
 public enum RangeState {

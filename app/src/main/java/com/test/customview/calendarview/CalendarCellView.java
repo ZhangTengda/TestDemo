@@ -1,6 +1,6 @@
 // Copyright 2013 Square, Inc.
 
-package com.test.view.calendarview;
+package com.test.customview.calendarview;
 
 import android.content.Context;
 import android.graphics.Canvas;

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.test.activity.BaseActivity;
 import com.test.activity.CalendarActivity;
+import com.test.activity.PopverAvtivity;
 import com.test.adapter.MainActivityAdapter;
 
 import butterknife.BindView;
@@ -49,7 +50,7 @@ public class MainActivity extends BaseActivity implements MainActivityAdapter.Re
                 break;
             }
             case 1: {
-                intent.setClass(this, CalendarActivity.class);
+                intent.setClass(this, PopverAvtivity.class);
                 startActivity(intent);
                 break;
             }

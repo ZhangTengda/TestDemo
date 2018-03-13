@@ -1,4 +1,4 @@
-package com.test.view.calendarview;
+package com.test.customview.calendarview;
 
 import android.view.ContextThemeWrapper;
 import android.widget.TextView;

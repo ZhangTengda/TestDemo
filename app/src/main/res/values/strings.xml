@@ -7,4 +7,5 @@
     <string name="month_name_format">MMMM yyyy</string>
     <string name="month_only_name_format">MMMM</string>
     <string name="year_only_format">yyyy</string>
+    <string name="helloworld">Hello World, PopoverViewActivity!</string>
 </resources>

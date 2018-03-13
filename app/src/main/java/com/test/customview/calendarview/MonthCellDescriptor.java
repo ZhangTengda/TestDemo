@@ -1,6 +1,6 @@
 // Copyright 2012 Square, Inc.
 
-package com.test.view.calendarview;
+package com.test.customview.calendarview;
 
 import java.util.Date;
 

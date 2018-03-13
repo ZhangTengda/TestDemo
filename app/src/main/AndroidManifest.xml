@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.CalendarActivity" />
+        <activity android:name=".activity.PopverAvtivity" />
     </application>
 
 </manifest>

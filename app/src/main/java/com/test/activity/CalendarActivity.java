@@ -5,14 +5,11 @@ import android.support.annotation.Nullable;
 
 import com.test.R;
 import com.test.utils.AppUtils;
-import com.test.view.calendarview.CalendarPickerView;
+import com.test.customview.calendarview.CalendarPickerView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
-
-import butterknife.BindView;
 
 /**
  * Created by roger on 2018/1/21.

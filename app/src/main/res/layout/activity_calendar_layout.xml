@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.test.view.calendarview.CalendarPickerView
+    <com.test.customview.calendarview.CalendarPickerView
         android:id="@+id/activity_calendar_calendarview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
