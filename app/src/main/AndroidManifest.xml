@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.test">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
@@ -19,6 +20,7 @@
         </activity>
         <activity android:name=".activity.CalendarActivity" />
         <activity android:name=".activity.PopverAvtivity" />
+        <activity android:name=".activity.OkHttpUtilsAvtivity" />
     </application>
 
 </manifest>

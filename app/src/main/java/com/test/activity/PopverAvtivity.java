@@ -14,11 +14,12 @@ import com.test.customview.PopoverView;
  */
 
 public class PopverAvtivity extends BaseActivity implements View.OnClickListener, PopoverView.PopoverViewDelegate {
-    /** Called when the activity is first created. */
+    /**
+     * Called when the activity is first created.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
 
         findViewById(R.id.button1).setOnClickListener(this);
         findViewById(R.id.button2).setOnClickListener(this);
@@ -32,9 +33,14 @@ public class PopverAvtivity extends BaseActivity implements View.OnClickListener
     }
 
     @Override
+    protected int getContentId() {
+        return R.layout.main;
+    }
+
+    @Override
     public void onClick(View v) {
         //get root layout
-        RelativeLayout rootView = (RelativeLayout)findViewById(R.id.rootLayout);
+        RelativeLayout rootView = (RelativeLayout) findViewById(R.id.rootLayout);
 
         PopoverView popoverView = new PopoverView(this, R.layout.popover_showed_view);
         popoverView.setContentSizeForViewInPopover(new Point(320, 340));

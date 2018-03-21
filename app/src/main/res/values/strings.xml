@@ -8,4 +8,5 @@
     <string name="month_only_name_format">MMMM</string>
     <string name="year_only_format">yyyy</string>
     <string name="helloworld">Hello World, PopoverViewActivity!</string>
+    <string name="activity_okutils_button">OkUtils</string>
 </resources>

@@ -19,8 +19,6 @@ public class CalendarActivity extends BaseActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar_layout);
-
 
         Calendar calendar = Calendar.getInstance();
         Calendar endCalendar = Calendar.getInstance();
@@ -44,5 +42,10 @@ public class CalendarActivity extends BaseActivity {
         // 这里没有的话，会null point
         ArrayList<Integer> list = new ArrayList<>();
         calendarPickerView.deactivateDates(list);
+    }
+
+    @Override
+    protected int getContentId() {
+        return R.layout.activity_calendar_layout;
     }
 }
