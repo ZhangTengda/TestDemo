@@ -10,7 +10,7 @@ public interface ResultCallBack {
 
     void onNetWorkNo();
 
-    void onSuccess(String json);
+    void onSuccess(String ApiName, String json);
 
     void onFailure(Request request, Exception e);
 }

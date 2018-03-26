@@ -34,8 +34,6 @@ public class MainActivity extends BaseActivity implements MainActivityAdapter.Re
         MainActivityAdapter mainAdapter = new MainActivityAdapter(this, indexArray);
         mainRecyclerView.setAdapter(mainAdapter);
         mainAdapter.addRecyclerViewClickListener(this);
-
-        test();
     }
 
 
