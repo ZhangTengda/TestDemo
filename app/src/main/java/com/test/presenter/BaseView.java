@@ -1,4 +1,4 @@
-package com.test.presenter.view;
+package com.test.presenter;
 
 /**
  * Created by roger on 2018/3/26.

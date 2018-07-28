@@ -1,16 +1,21 @@
 package com.test.utils;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.v4.content.ContextCompat;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by roger on 2018/2/5.
  */
 
-public class AppUtils {
+public class AppUtil {
     public static int getDaysInMonth(int month, int year) {
         switch (month) {
             case Calendar.JANUARY:
@@ -48,5 +53,24 @@ public class AppUtils {
         }
 
         return false;
+    }
+
+    //需要申请的权限
+    private static String[] permissions = new String[]{
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.CAMERA
+    };
+
+    //检测权限
+    public static String[] checkPermission(Context context){
+        List<String> data = new ArrayList<>();//存储未申请的权限
+        for (String permission : permissions) {
+            int checkSelfPermission = ContextCompat.checkSelfPermission(context, permission);
+            if(checkSelfPermission == PackageManager.PERMISSION_DENIED){//未申请
+                data.add(permission);
+            }
+        }
+        return data.toArray(new String[data.size()]);
     }
 }

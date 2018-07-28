@@ -9,8 +9,10 @@ import android.view.View;
 
 import com.test.activity.BaseActivity;
 import com.test.activity.CalendarActivity;
+import com.test.activity.EventBusAvtivity;
 import com.test.activity.OkHttpUtilsAvtivity;
 import com.test.activity.PopverAvtivity;
+import com.test.activity.SecondActivity;
 import com.test.adapter.MainActivityAdapter;
 
 import butterknife.BindView;
@@ -20,10 +22,20 @@ import butterknife.BindView;
  */
 
 public class MainActivity extends BaseActivity implements MainActivityAdapter.RecyclerViewItemClickListener {
+
     @BindView(R.id.activity_main_recyclerview)
     RecyclerView mainRecyclerView;
     //
-    private String[] indexArray = {"Calendar", "Demo", "OkHttpUtils"};
+    private String[] indexArray = {"Calendar", "Demo", "OkHttpUtils", "EventBus", "1",
+            "11", "111", "1111", "11111", "111111", "1111111", "11111111", "111111111", "1111111111",
+            "11111", "111111", "11111", "11111", "11111", "11111", "11111", "11111", "11111",
+            "111111", "11111", "11111", "11111", "11111", "11111", "11111", "11111", "111111",
+            "11111", "11111", "11111", "11111", "11111", "11111", "11111", "111111", "11111",
+            "11111", "11111", "11111", "11111", "11111", "11111", "111111", "11111", "11111",
+            "11111", "11111", "11111", "11111", "11111", "111111", "11111", "11111", "11111",
+            "11111", "11111", "11111", "11111", "111111", "11111", "11111", "11111", "11111",
+            "11111", "11111", "11111", "111111", "11111", "11111", "11111", "11111", "11111",
+            "111111", "11111", "11111", "11111", "11111", "11111", "11111", "11111", "11111", "11111"};
 
 
     @Override
@@ -44,24 +56,52 @@ public class MainActivity extends BaseActivity implements MainActivityAdapter.Re
 
     @Override
     public void onItemClick(View view, int position) {
-        Intent intent = new Intent();
         switch (position) {
             case 0: {
-                intent.setClass(this, CalendarActivity.class);
-                startActivity(intent);
+                calendarClick();
+
                 break;
             }
             case 1: {
-                intent.setClass(this, PopverAvtivity.class);
-                startActivity(intent);
+                popverViewClick();
+
                 break;
             }
             case 2: {
-                intent.setClass(this, OkHttpUtilsAvtivity.class);
-                startActivity(intent);
+                okHttpClick();
+
+                break;
+            }
+            case 3: {
+                eventsBusClick();
+
                 break;
             }
 
         }
+    }
+
+    public void calendarClick() {
+        Intent intent = new Intent();
+        intent.setClass(this, CalendarActivity.class);
+        startActivity(intent);
+    }
+
+    public void popverViewClick() {
+        Intent intent = new Intent();
+        intent.setClass(this, PopverAvtivity.class);
+        startActivity(intent);
+    }
+
+    public void okHttpClick() {
+        Intent intent = new Intent();
+        intent.setClass(this, OkHttpUtilsAvtivity.class);
+        startActivity(intent);
+    }
+
+    public void eventsBusClick() {
+        Intent intent = new Intent();
+        intent.setClass(this, EventBusAvtivity.class);
+        startActivity(intent);
     }
 }

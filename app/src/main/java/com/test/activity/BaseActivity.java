@@ -2,6 +2,7 @@ package com.test.activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.test.R;
 
@@ -27,6 +29,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected BaseActivity baseActivity;
     private View dialogView;
+
+    /***封装toast对象**/
+    private static Toast toast;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -88,5 +93,58 @@ public abstract class BaseActivity extends AppCompatActivity {
             progressDialog.dismiss();
         }
     }
+
+    /**
+     * start activity & Bundle
+     *
+     * @param clz    clz
+     * @param bundle bundle
+     */
+    public void startActivity(Class<?> clz, Bundle bundle) {
+        Intent intent = new Intent(this, clz);
+        if (bundle != null) {
+            intent.putExtra("bundle", bundle);
+        }
+        startActivity(intent);
+    }
+
+    /**
+     * start activity
+     *
+     * @param clz clz
+     */
+    public void startActivity(Class<?> clz) {
+        Intent intent = new Intent(this, clz);
+        startActivity(intent);
+    }
+
+    /**
+     * 显示短toast
+     *
+     * @param msg
+     */
+    public void toastShort(String msg) {
+        if (null == toast) {
+            toast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
+        } else {
+            toast.setText(msg);
+        }
+        toast.show();
+    }
+
+    /**
+     * 显示长toast
+     *
+     * @param msg
+     */
+    public void toastLong(String msg) {
+        if (null == toast) {
+            toast = toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
+        } else {
+            toast.setText(msg);
+        }
+        toast.show();
+    }
+
 
 }

@@ -1,14 +1,23 @@
 package com.test.http;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Base64;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.squareup.okhttp.Request;
-import com.test.utils.AppUtils;
+import com.test.utils.AppUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -16,6 +25,8 @@ import java.util.Map;
  */
 
 public class HttpUtils {
+    static boolean isDebug = true;
+    private static RequestQueue queue;
 
     /**
      * get request
@@ -25,8 +36,8 @@ public class HttpUtils {
      * @param parmasMap parmasMap
      * @param callBack  callBack
      */
-    public static void sendGetRequest(Context context, String url, HashMap<String, String> parmasMap, final ResultCallBack callBack) {
-        if (!AppUtils.isNetworkAvailable(context)) {
+    public static void sendGetRequest(Context context, final String url, Map<String, String> parmasMap, final ResultCallBack callBack) {
+        if (!AppUtil.isNetworkAvailable(context)) {
             if (callBack != null) {
                 callBack.onNetWorkNo();
             }
@@ -37,7 +48,7 @@ public class HttpUtils {
                 .url(url)
                 .addHeader("Authorization", basic)
                 .params(parmasMap)
-                .tag(context)
+//                .tag(context)
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -50,7 +61,7 @@ public class HttpUtils {
                     @Override
                     public void onResponse(String response) {
                         if (callBack != null) {
-                            callBack.onSuccess(response);
+                            callBack.onSuccess(url,response);
                         }
                     }
                 });
@@ -64,13 +75,15 @@ public class HttpUtils {
      * @param params   params
      * @param callBack callBack
      */
-    public static void sendPostRequest(Context context, String url, Map<String, String> params, final ResultCallBack callBack) {
-        if (!AppUtils.isNetworkAvailable(context)) {
+    public static void sendPostRequest(Context context, final String url, Map<String, String> params,
+                                       final ResultCallBack callBack) {
+        if (!AppUtil.isNetworkAvailable(context)) {
             if (callBack != null) {
                 callBack.onNetWorkNo();
             }
             return;
         }
+
         OkHttpUtils.post()
                 .url(url)
                 .params(params)
@@ -87,7 +100,7 @@ public class HttpUtils {
                     @Override
                     public void onResponse(String response) {
                         if (callBack != null) {
-                            callBack.onSuccess(response);
+                            callBack.onSuccess(url,response);
                         }
                     }
                 });
@@ -96,5 +109,111 @@ public class HttpUtils {
     }
 
 
-    private static String basic = "Basic " + Base64.encodeToString(("m").getBytes(), Base64.NO_WRAP);
+    private static String basic = "Basic " + Base64.encodeToString(("test:5QeJsWHMx3").getBytes(), Base64.NO_WRAP);
+
+
+    public static void sendVolleyGetRequest(Context context, final String url, Map<String, String> parmasMap,
+                                            final RequestListener callBack) {
+
+        if (queue == null)
+            queue = Volley.newRequestQueue(context);
+
+        String apiUrl = appendParamsWithURL(url, parmasMap);
+
+        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, apiUrl,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (callBack != null)
+                            callBack.onSuccess(url, response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        if (callBack != null)
+                            callBack.onFailure(url, volleyError);
+                    }
+                }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                return configAPIHTTPRequestHeaders();
+            }
+        };
+        stringRequest.setTag("volleyget");//tag can use ApiName.
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(25000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        queue.add(stringRequest);
+    }
+
+
+    private static Map<String, String> configAPIHTTPRequestHeaders() {
+        // samsung:gqwRx7wbHJ2VNg7 test:5QeJsWHMx3
+        String basic;
+        Map<String, String> headersMap = new HashMap<String, String>();
+//        headersMap.put("Content-Type", "application/json; charset=utf-8");
+//        headersMap.put("Accept", "application/json");
+        if (isDebug) {
+            basic = "Basic " + Base64.encodeToString(("test:5QeJsWHMx3").getBytes(), Base64.NO_WRAP);
+
+            headersMap.put("Authorization", basic);
+//            headersMap.put("Host", HOST);
+
+        } else {
+            basic = "Basic " + Base64.encodeToString(("samsung:gqwRx7wbHJ2VNg7").getBytes(), Base64.NO_WRAP);
+            headersMap.put("Authorization", basic);
+
+            // simulation environment need bind host
+//            if (isSimulation) {
+//                headersMap.put("Host", API_HOST);
+//            }
+        }
+        return headersMap;
+    }
+
+    /**
+     * append params with URL
+     *
+     * @param url    url
+     * @param params params Map
+     * @return full url
+     */
+    public static String appendParamsWithURL(String url, Map<String, String> params) {
+        //
+        String requestURL = "";
+        if (!TextUtils.isEmpty(url)) {
+            if (params == null || params.size() == 0) {
+                requestURL = url;
+            } else {
+                Iterator<Map.Entry<String, String>> iterator = params.entrySet().iterator();
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append(url);
+                if (url.contains("?")) {
+                    stringBuilder.append("&");
+                } else {
+                    stringBuilder.append("?");
+                }
+
+                while (iterator.hasNext()) {
+                    Map.Entry<String, String> entry = iterator.next();
+                    String key = entry.getKey();
+                    String value = entry.getValue();
+                    if (!TextUtils.isEmpty(key) && !TextUtils.isEmpty(value)) {
+                        stringBuilder.append(key);
+                        stringBuilder.append("=");
+                        stringBuilder.append(value);
+                        stringBuilder.append("&");
+                    }
+                }
+
+                if (stringBuilder.length() > 0) {
+                    requestURL = stringBuilder.substring(0, stringBuilder.length() - 1);
+                }
+            }
+        }
+
+        return requestURL;
+    }
+
 }

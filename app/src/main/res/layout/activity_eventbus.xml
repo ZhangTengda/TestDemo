@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/eventbus_jieshou"
+        android:text="接收"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"/>
+
+    <Button
+        android:id="@+id/zxing01"
+        android:text="ZXing"
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"/>
+
+    <Button
+        android:id="@+id/zxing_easy"
+        android:text="Easy Model"
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"/>
+
+    <Button
+        android:id="@+id/zxing_pic"
+        android:text="Select Pic"
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"/>
+
+    <Button
+        android:id="@+id/zxing_diy"
+        android:text="DIY"
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"/>
+
+    <Button
+        android:id="@+id/zxing_create"
+        android:text="Create"
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"/>
+
+    <TextView
+        android:id="@+id/text"
+        android:text="倒计时"
+        android:textColor="@color/chopeBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"/>
+
+</LinearLayout>

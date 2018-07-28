@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.test.R;
-import com.test.utils.AppUtils;
+import com.test.utils.AppUtil;
 import com.test.customview.calendarview.CalendarPickerView;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class CalendarActivity extends BaseActivity {
         if (currentMonth == 0) {
             endCalendar.set(calendar.get(Calendar.YEAR), 11, 32);
         } else {
-            int daysInMonth = AppUtils.getDaysInMonth(calendar.get(Calendar.MONTH) - 1, calendar.get(Calendar.MONTH));
+            int daysInMonth = AppUtil.getDaysInMonth(calendar.get(Calendar.MONTH) - 1, calendar.get(Calendar.MONTH));
             endCalendar.set(calendar.get(Calendar.YEAR) + 1, calendar.get(Calendar.MONTH) - 1, daysInMonth + 1);
         }
 

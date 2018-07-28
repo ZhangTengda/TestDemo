@@ -6,6 +6,12 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -23,6 +29,10 @@
         <activity android:name=".activity.CalendarActivity" />
         <activity android:name=".activity.PopverAvtivity" />
         <activity android:name=".activity.OkHttpUtilsAvtivity" />
+        <activity android:name=".activity.EventBusAvtivity" />
+        <activity android:name=".activity.SecondActivity" />
+        <activity android:name=".activity.ZXingActivity" />
+        <activity android:name=".activity.QRCodeActivity" />
     </application>
 
 </manifest>
