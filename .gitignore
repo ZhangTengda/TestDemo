@@ -1,2 +1,13 @@
 
 .idea/workspace.xml
+*.json
+*.rawproto
+*.bin
+*.json
+*.rawproto
+*.bin
+build/android-profile/profile-2018-02-05-17-39-48-077.json
+*.rawproto
+*.lock
+build/android-profile/profile-2018-02-05-17-39-48-077.json
+.gradle/4.1/javaCompile/classAnalysis.bin

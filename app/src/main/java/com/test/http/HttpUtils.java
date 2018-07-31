@@ -25,7 +25,13 @@ import java.util.Map;
  */
 
 public class HttpUtils {
-    static boolean isDebug = true;
+    /**
+     * api String
+     *
+     * http://api.m.mtime.cn/PageSubArea/TrailerList.api
+     */
+
+
     private static RequestQueue queue;
 
     /**
@@ -48,7 +54,6 @@ public class HttpUtils {
                 .url(url)
                 .addHeader("Authorization", basic)
                 .params(parmasMap)
-//                .tag(context)
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -61,7 +66,7 @@ public class HttpUtils {
                     @Override
                     public void onResponse(String response) {
                         if (callBack != null) {
-                            callBack.onSuccess(url,response);
+                            callBack.onSuccess(url, response);
                         }
                     }
                 });
@@ -100,7 +105,7 @@ public class HttpUtils {
                     @Override
                     public void onResponse(String response) {
                         if (callBack != null) {
-                            callBack.onSuccess(url,response);
+                            callBack.onSuccess(url, response);
                         }
                     }
                 });
@@ -149,26 +154,10 @@ public class HttpUtils {
 
 
     private static Map<String, String> configAPIHTTPRequestHeaders() {
-        // samsung:gqwRx7wbHJ2VNg7 test:5QeJsWHMx3
-        String basic;
         Map<String, String> headersMap = new HashMap<String, String>();
-//        headersMap.put("Content-Type", "application/json; charset=utf-8");
-//        headersMap.put("Accept", "application/json");
-        if (isDebug) {
-            basic = "Basic " + Base64.encodeToString(("test:5QeJsWHMx3").getBytes(), Base64.NO_WRAP);
+        String basic = "Basic " + Base64.encodeToString(("test:5QeJsWHMx3").getBytes(), Base64.NO_WRAP);
+        headersMap.put("Authorization", basic);
 
-            headersMap.put("Authorization", basic);
-//            headersMap.put("Host", HOST);
-
-        } else {
-            basic = "Basic " + Base64.encodeToString(("samsung:gqwRx7wbHJ2VNg7").getBytes(), Base64.NO_WRAP);
-            headersMap.put("Authorization", basic);
-
-            // simulation environment need bind host
-//            if (isSimulation) {
-//                headersMap.put("Host", API_HOST);
-//            }
-        }
         return headersMap;
     }
 
